@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# Convert JPG/PNG images to WebP for Plot places.
+#
+# Usage:
+#   ./scripts/convert-images              # convert all jpg/png in images/
+#   ./scripts/convert-images noble-rot    # convert only files matching "noble-rot"
+#
+# Requires: cwebp (brew install webp)
+
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+IMAGES_DIR="$REPO_DIR/images"
+QUALITY=80
+MAX_WIDTH=1200
+
+if ! command -v cwebp &> /dev/null; then
+    echo "Error: cwebp not found. Install with: brew install webp"
+    exit 1
+fi
+
+filter="${1:-}"
+converted=0
+skipped=0
+
+for file in "$IMAGES_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG} 2>/dev/null; do
+    [ -f "$file" ] || continue
+
+    basename="$(basename "$file")"
+    name="${basename%.*}"
+    webp_file="$IMAGES_DIR/$name.webp"
+
+    # Filter by name if argument provided
+    if [ -n "$filter" ] && [[ "$basename" != *"$filter"* ]]; then
+        continue
+    fi
+
+    # Skip if webp already exists
+    if [ -f "$webp_file" ]; then
+        echo "  skip: $basename (webp exists)"
+        skipped=$((skipped + 1))
+        continue
+    fi
+
+    echo "  convert: $basename → $name.webp"
+    cwebp -q "$QUALITY" -resize "$MAX_WIDTH" 0 "$file" -o "$webp_file" -quiet
+    converted=$((converted + 1))
+
+    # Remove original after successful conversion
+    rm "$file"
+done
+
+if [ $converted -eq 0 ] && [ $skipped -eq 0 ]; then
+    echo "No jpg/png files found in images/"
+    echo "Drop your images into images/ and run again."
+else
+    echo ""
+    echo "Converted: $converted, Skipped: $skipped"
+fi
