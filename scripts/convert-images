@@ -8,8 +8,6 @@
 #
 # Requires: cwebp (brew install webp)
 
-set -euo pipefail
-
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 IMAGES_DIR="$REPO_DIR/images"
 QUALITY=80
@@ -24,9 +22,8 @@ filter="${1:-}"
 converted=0
 skipped=0
 
-for file in "$IMAGES_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG} 2>/dev/null; do
-    [ -f "$file" ] || continue
-
+shopt -s nullglob nocaseglob
+for file in "$IMAGES_DIR"/*.jpg "$IMAGES_DIR"/*.jpeg "$IMAGES_DIR"/*.png; do
     basename="$(basename "$file")"
     name="${basename%.*}"
     webp_file="$IMAGES_DIR/$name.webp"
@@ -50,6 +47,7 @@ for file in "$IMAGES_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG} 2>/dev/null; do
     # Remove original after successful conversion
     rm "$file"
 done
+shopt -u nullglob nocaseglob
 
 if [ $converted -eq 0 ] && [ $skipped -eq 0 ]; then
     echo "No jpg/png files found in images/"
