@@ -13,7 +13,7 @@
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 IMAGES_DIR="$REPO_DIR/images"
-QUALITY=80
+QUALITY=100
 MAX_WIDTH=1200
 
 if ! command -v cwebp &> /dev/null; then
