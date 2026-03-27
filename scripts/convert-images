@@ -2,9 +2,12 @@
 #
 # Convert JPG/PNG images to WebP for Plot places.
 #
+# Expects: images/<city>/<place-name>/photo.jpg
+# Outputs: images/<place-name>-1.webp, <place-name>-2.webp, etc.
+#
 # Usage:
-#   ./scripts/convert-images              # convert all jpg/png in images/
-#   ./scripts/convert-images noble-rot    # convert only files matching "noble-rot"
+#   ./scripts/convert-images                # convert all
+#   ./scripts/convert-images tate-modern    # convert only one place
 #
 # Requires: cwebp (brew install webp)
 
@@ -23,35 +26,50 @@ converted=0
 skipped=0
 
 shopt -s nullglob nocaseglob
-for file in "$IMAGES_DIR"/*.jpg "$IMAGES_DIR"/*.jpeg "$IMAGES_DIR"/*.png; do
-    basename="$(basename "$file")"
-    name="${basename%.*}"
-    webp_file="$IMAGES_DIR/$name.webp"
+
+for place_dir in "$IMAGES_DIR"/*/*/; do
+    [ -d "$place_dir" ] || continue
+
+    place_name="$(basename "$place_dir")"
 
     # Filter by name if argument provided
-    if [ -n "$filter" ] && [[ "$basename" != *"$filter"* ]]; then
+    if [ -n "$filter" ] && [[ "$place_name" != *"$filter"* ]]; then
         continue
     fi
 
-    # Skip if webp already exists
-    if [ -f "$webp_file" ]; then
-        echo "  skip: $basename (webp exists)"
-        skipped=$((skipped + 1))
+    # Collect source images
+    sources=()
+    for file in "$place_dir"*.jpg "$place_dir"*.jpeg "$place_dir"*.png; do
+        sources+=("$file")
+    done
+
+    if [ ${#sources[@]} -eq 0 ]; then
         continue
     fi
 
-    echo "  convert: $basename → $name.webp"
-    cwebp -q "$QUALITY" -resize "$MAX_WIDTH" 0 "$file" -o "$webp_file" -quiet
-    converted=$((converted + 1))
+    echo "$place_name (${#sources[@]} images):"
 
-    # Remove original after successful conversion
-    rm "$file"
+    index=1
+    for file in "${sources[@]}"; do
+        webp_file="$IMAGES_DIR/$place_name-$index.webp"
+
+        if [ -f "$webp_file" ]; then
+            echo "  skip: $place_name-$index.webp (exists)"
+            skipped=$((skipped + 1))
+        else
+            echo "  convert: $(basename "$file") → $place_name-$index.webp"
+            cwebp -q "$QUALITY" -resize "$MAX_WIDTH" 0 "$file" -o "$webp_file" -quiet
+            converted=$((converted + 1))
+        fi
+
+        index=$((index + 1))
+    done
 done
+
 shopt -u nullglob nocaseglob
 
 if [ $converted -eq 0 ] && [ $skipped -eq 0 ]; then
-    echo "No jpg/png files found in images/"
-    echo "Drop your images into images/ and run again."
+    echo "No images found. Expected: images/<city>/<place-name>/*.jpg"
 else
     echo ""
     echo "Converted: $converted, Skipped: $skipped"
