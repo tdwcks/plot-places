@@ -1,0 +1,133 @@
+{
+  "places": [
+    {
+      "id": "noble-rot",
+      "name": "Noble Rot",
+      "description": "Exceptional wine list in a beautifully worn-in Lamb's Conduit Street dining room",
+      "category": "bars",
+      "city": "london",
+      "neighbourhood": "Bloomsbury",
+      "latitude": 51.5225,
+      "longitude": -0.1195,
+      "address": "51 Lamb's Conduit Street, London WC1N 3NB",
+      "openingHours": {
+        "weekdayDescriptions": ["Monday: Closed", "Tuesday: 12–2:30 PM, 5:30–10:30 PM", "Wednesday: 12–2:30 PM, 5:30–10:30 PM", "Thursday: 12–2:30 PM, 5:30–10:30 PM", "Friday: 12–2:30 PM, 5:30–10:30 PM", "Saturday: 12–10:30 PM", "Sunday: 12–4 PM"],
+        "openNow": null
+      },
+      "images": ["noble-rot-1.webp"],
+      "googlePlaceId": null,
+      "rating": 4.6,
+      "userRatingCount": 1247,
+      "priceLevel": "PRICE_LEVEL_EXPENSIVE",
+      "websiteUri": "https://noblerot.co.uk",
+      "phoneNumber": "+44 20 7242 8963"
+    },
+    {
+      "id": "rosslyn-coffee",
+      "name": "Rosslyn Coffee",
+      "description": "Perfectly executed specialty coffee in a minimal, light-filled City spot",
+      "category": "coffee",
+      "city": "london",
+      "neighbourhood": "City of London",
+      "latitude": 51.5128,
+      "longitude": -0.0855,
+      "address": "78 Queen Victoria Street, London EC4N 4SJ",
+      "openingHours": {
+        "weekdayDescriptions": ["Monday: 7 AM–5 PM", "Tuesday: 7 AM–5 PM", "Wednesday: 7 AM–5 PM", "Thursday: 7 AM–5 PM", "Friday: 7 AM–5 PM", "Saturday: 9 AM–5 PM", "Sunday: Closed"],
+        "openNow": null
+      },
+      "images": ["rosslyn-coffee-1.webp"],
+      "googlePlaceId": null,
+      "rating": 4.5,
+      "userRatingCount": 892,
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "websiteUri": "https://rosslyncoffee.com",
+      "phoneNumber": null
+    },
+    {
+      "id": "bao-soho",
+      "name": "BAO Soho",
+      "description": "Iconic Taiwanese steamed buns and small plates — worth every minute of the queue",
+      "category": "eat",
+      "city": "london",
+      "neighbourhood": "Soho",
+      "latitude": 51.5133,
+      "longitude": -0.1347,
+      "address": "53 Lexington Street, London W1F 9AS",
+      "openingHours": {
+        "weekdayDescriptions": ["Monday: 12–3 PM, 5:30–10 PM", "Tuesday: 12–3 PM, 5:30–10 PM", "Wednesday: 12–3 PM, 5:30–10 PM", "Thursday: 12–3 PM, 5:30–10 PM", "Friday: 12–3 PM, 5:30–10:30 PM", "Saturday: 12–10:30 PM", "Sunday: 12–9 PM"],
+        "openNow": null
+      },
+      "images": ["bao-soho-1.webp"],
+      "googlePlaceId": null,
+      "rating": 4.4,
+      "userRatingCount": 3200,
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "websiteUri": "https://baolondon.com",
+      "phoneNumber": null
+    },
+    {
+      "id": "barbican-centre",
+      "name": "Barbican Centre",
+      "description": "Brutalist icon housing world-class art, music, theatre, and a tropical conservatory",
+      "category": "culture",
+      "city": "london",
+      "neighbourhood": "Barbican",
+      "latitude": 51.5200,
+      "longitude": -0.0937,
+      "address": "Silk Street, London EC2Y 8DS",
+      "openingHours": {
+        "weekdayDescriptions": ["Monday: 10 AM–9 PM", "Tuesday: 10 AM–9 PM", "Wednesday: 10 AM–9 PM", "Thursday: 10 AM–9 PM", "Friday: 10 AM–9 PM", "Saturday: 10 AM–9 PM", "Sunday: 10 AM–9 PM"],
+        "openNow": null
+      },
+      "images": ["barbican-centre-1.webp"],
+      "googlePlaceId": null,
+      "rating": 4.5,
+      "userRatingCount": 15400,
+      "priceLevel": null,
+      "websiteUri": "https://www.barbican.org.uk",
+      "phoneNumber": "+44 20 7638 4141"
+    },
+    {
+      "id": "hampstead-heath",
+      "name": "Hampstead Heath",
+      "description": "Wild parkland with swimming ponds and the best panoramic views of the London skyline",
+      "category": "outdoors",
+      "city": "london",
+      "neighbourhood": "Hampstead",
+      "latitude": 51.5614,
+      "longitude": -0.1636,
+      "address": "Hampstead Heath, London NW3",
+      "openingHours": null,
+      "images": ["hampstead-heath-1.webp"],
+      "googlePlaceId": null,
+      "rating": 4.8,
+      "userRatingCount": 28000,
+      "priceLevel": "PRICE_LEVEL_FREE",
+      "websiteUri": "https://www.hampsteadheath.net",
+      "phoneNumber": null
+    },
+    {
+      "id": "the-lamb-bloomsbury",
+      "name": "The Lamb",
+      "description": "Victorian pub with original snob screens and a proper pint — unchanged since 1729",
+      "category": "pubs",
+      "city": "london",
+      "neighbourhood": "Bloomsbury",
+      "latitude": 51.5233,
+      "longitude": -0.1199,
+      "address": "94 Lamb's Conduit Street, London WC1N 3LZ",
+      "openingHours": {
+        "weekdayDescriptions": ["Monday: 11 AM–11 PM", "Tuesday: 11 AM–11 PM", "Wednesday: 11 AM–11 PM", "Thursday: 11 AM–11 PM", "Friday: 11 AM–11 PM", "Saturday: 12 PM–11 PM", "Sunday: 12 PM–10:30 PM"],
+        "openNow": null
+      },
+      "images": ["the-lamb-1.webp"],
+      "googlePlaceId": null,
+      "rating": 4.5,
+      "userRatingCount": 2100,
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "websiteUri": "https://www.thelamblondon.com",
+      "phoneNumber": "+44 20 7405 0713"
+    }
+  ]
+}
